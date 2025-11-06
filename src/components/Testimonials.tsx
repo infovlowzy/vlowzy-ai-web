@@ -16,13 +16,13 @@ const LogoCarousel = () => {
   const logosLoop = [...clientLogos, ...clientLogos];
   return (
     <div className="overflow-hidden w-full py-6">
-      <div className="flex gap-12 animate-infiniteScroll">
+      <div className="flex gap-12 animate-infiniteScroll justify-center items-center">
         {logosLoop.map((logo, idx) => (
           <img
             key={idx}
             src={logo}
             alt=""
-            className="h-10 grayscale opacity-50 hover:grayscale-0 transition-all"
+            className="h-16 w-auto grayscale opacity-50 hover:grayscale-0 transition-all"
           />
         ))}
       </div>
