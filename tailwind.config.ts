@@ -96,9 +96,9 @@ export default {
           "50%": { transform: "translateY(-10px)" },
         },
         infiniteScroll: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-49.9%)' }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
