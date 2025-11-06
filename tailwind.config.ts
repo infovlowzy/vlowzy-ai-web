@@ -95,6 +95,10 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        infiniteScroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,6 +108,7 @@ export default {
         "scale-in": "scale-in 0.5s ease-out",
         "glow": "glow 3s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
+        infiniteScroll: "infiniteScroll 20s linear infinite",
       },
     },
   },
