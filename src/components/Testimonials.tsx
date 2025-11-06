@@ -1,6 +1,35 @@
 import { Card } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
+const clientLogos = [
+  '/logos/1.svg',
+  '/logos/2.svg',
+  '/logos/3.svg',
+  '/logos/4.svg',
+  '/logos/5.svg',
+  '/logos/6.svg',
+  '/logos/7.svg'
+];
+
+
+const LogoCarousel = () => {
+  const logosLoop = [...clientLogos, ...clientLogos];
+  return (
+    <div className="overflow-hidden w-full py-6">
+      <div className="flex gap-12 animate-infiniteScroll">
+        {logosLoop.map((logo, idx) => (
+          <img
+            key={idx}
+            src={logo}
+            alt=""
+            className="h-10 grayscale opacity-50 hover:grayscale-0 transition-all"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export const Testimonials = () => {
   const testimonials = [
     {
@@ -67,12 +96,7 @@ export const Testimonials = () => {
           <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-8">
             Dipercaya oleh
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all">
-            <div className="text-2xl font-bold text-foreground">Genesys</div>
-            <div className="text-2xl font-bold text-foreground">Sekawan Samudra</div>
-            <div className="text-2xl font-bold text-foreground">Multilabel</div>
-            <div className="text-2xl font-bold text-foreground">Dan Masih Banyak Lainya</div>
-          </div>
+          <LogoCarousel />
         </div>
       </div>
     </section>
