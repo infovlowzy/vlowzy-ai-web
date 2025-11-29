@@ -2,24 +2,11 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
-const clientLogos = [
-  "/logos/1.svg",
-  "/logos/2.svg",
-  "/logos/3.svg",
-  "/logos/4.svg",
-  "/logos/5.svg",
-  "/logos/6.svg",
-  "/logos/7.svg",
-  "/logos/8.svg",
-  "/logos/9.svg",
-  "/logos/10.svg",
-  "/logos/11.svg",
-  "/logos/12.svg",
-  "/logos/13.svg",
-  "/logos/14.svg",
-  "/logos/15.svg",
-  "/logos/16.svg",
-];
+const logoModules = import.meta.glob("/public/logos/*.{png,jpg,jpeg,svg}", {
+  eager: true,
+});
+
+const clientLogos = Object.values(logoModules).map((m: any) => m.default);
 
 const LogosPerPage = 12;
 
