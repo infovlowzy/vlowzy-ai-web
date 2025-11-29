@@ -32,16 +32,16 @@ const LogoGridPager = () => {
   return (
     <div className="w-full">
       {/* Grid logos */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
         {currentLogos.map((logo, idx) => (
           <div
             key={idx}
-            className="flex items-center justify-center rounded-xl bg-muted/40 border border-border/40 p-4 hover:bg-muted/70 transition-colors"
+            className="flex h-28 sm:h-32 items-center justify-center rounded-2xl bg-white shadow-sm border border-border/30"
           >
             <img
               src={logo}
               alt=""
-              className="h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-all duration-200"
+              className="max-h-16 sm:max-h-20 w-auto object-contain"
             />
           </div>
         ))}
@@ -85,6 +85,7 @@ const LogoGridPager = () => {
     </div>
   );
 };
+
 
 export const Testimonials = () => {
   const testimonials = [
