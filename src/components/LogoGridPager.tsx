@@ -1,9 +1,28 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const LogosPerPage = 12; // bisa dinaikkan ke 16 kalau mau
+const clientLogos = [
+  "/logos/1.svg",
+  "/logos/2.svg",
+  "/logos/3.svg",
+  "/logos/4.svg",
+  "/logos/5.svg",
+  "/logos/6.svg",
+  "/logos/7.svg",
+  "/logos/8.svg",
+  "/logos/9.svg",
+  "/logos/10.svg",
+  "/logos/11.svg",
+  "/logos/12.svg",
+  "/logos/13.svg",
+  "/logos/14.svg",
+  "/logos/15.svg",
+  "/logos/16.svg",
+];
 
-const LogoGridPager = () => {
+const LogosPerPage = 12;
+
+const LogoGridPagerInner = () => {
   const [page, setPage] = useState(0);
 
   const totalPages = Math.ceil(clientLogos.length / LogosPerPage);
@@ -76,5 +95,24 @@ const LogoGridPager = () => {
         </div>
       )}
     </div>
+  );
+};
+
+export const LogoGridPager = () => {
+  return (
+    <section className="py-24 relative">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Our <span className="text-primary">Clients</span>
+          </h2>
+          <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+            Dipercaya oleh berbagai bisnis
+          </p>
+        </div>
+
+        <LogoGridPagerInner />
+      </div>
+    </section>
   );
 };
