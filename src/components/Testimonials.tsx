@@ -1,31 +1,100 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const clientLogos = [
-  '/logos/1.svg',
-  '/logos/2.svg',
-  '/logos/3.svg',
-  '/logos/4.svg',
-  '/logos/5.svg',
-  '/logos/6.svg',
-  '/logos/7.svg'
+  "/logos/1.svg",
+  "/logos/2.svg",
+  "/logos/3.svg",
+  "/logos/4.svg",
+  "/logos/5.svg",
+  "/logos/6.svg",
+  "/logos/7.svg",
+  "/logos/8.svg",
+  "/logos/9.svg",
+  "/logos/10.svg",
+  "/logos/11.svg",
+  "/logos/12.svg",
+  "/logos/13.svg",
+  "/logos/14.svg",
+  "/logos/15.svg",
+  "/logos/16.svg",
 ];
 
+const LogosPerPage = 12;
 
-const LogoCarousel = () => {
-  const logosLoop = [...clientLogos, ...clientLogos, ...clientLogos];
+const LogoGridPager = () => {
+  const [page, setPage] = useState(0);
+
+  const totalPages = Math.ceil(clientLogos.length / LogosPerPage);
+
+  const startIndex = page * LogosPerPage;
+  const currentLogos = clientLogos.slice(
+    startIndex,
+    startIndex + LogosPerPage
+  );
+
+  const goPrev = () => {
+    setPage((p) => (p === 0 ? totalPages - 1 : p - 1));
+  };
+
+  const goNext = () => {
+    setPage((p) => (p === totalPages - 1 ? 0 : p + 1));
+  };
+
   return (
-    <div className="overflow-hidden w-full py-6">
-      <div className="flex gap-12 animate-infiniteScroll justify-center items-center">
-        {logosLoop.map((logo, idx) => (
-          <img
+    <div className="w-full">
+      {/* Grid logos */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {currentLogos.map((logo, idx) => (
+          <div
             key={idx}
-            src={logo}
-            alt=""
-            className="h-20 w-auto grayscale opacity-50 hover:grayscale-0 transition-all"
-          />
+            className="flex items-center justify-center rounded-xl bg-muted/40 border border-border/40 p-4 hover:bg-muted/70 transition-colors"
+          >
+            <img
+              src={logo}
+              alt=""
+              className="h-12 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-200"
+            />
+          </div>
         ))}
       </div>
+
+      {/* Page controls */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-4 mt-8">
+          <button
+            type="button"
+            onClick={goPrev}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/60 bg-background hover:bg-muted transition-colors"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setPage(i)}
+                className={`h-2.5 w-2.5 rounded-full transition-all ${
+                  i === page
+                    ? "bg-primary w-6"
+                    : "bg-border hover:bg-muted-foreground/60"
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={goNext}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/60 bg-background hover:bg-muted transition-colors"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -35,19 +104,22 @@ export const Testimonials = () => {
     {
       name: "Dony Susanto",
       role: "CEO, PT Genesys Integrated Indonesia",
-      content: "Bener-bener game changing, saya kira awalnya cuma chatbot biasa, tapi ternyata bisa banyak banget fitur-fitur AI yang bisa ditambahkan.",
+      content:
+        "Bener-bener game changing, saya kira awalnya cuma chatbot biasa, tapi ternyata bisa banyak banget fitur-fitur AI yang bisa ditambahkan.",
       rating: 5,
     },
     {
       name: "Hartono Gunawan",
       role: "CEO, PT Sekawan Samudara Indonesia",
-      content: "Fitur Auto Follow-Up ke customer dan task assignment sangat membantu, ditambah adanya visualisasi dashboard yang mendukung.",
+      content:
+        "Fitur Auto Follow-Up ke customer dan task assignment sangat membantu, ditambah adanya visualisasi dashboard yang mendukung.",
       rating: 5,
     },
     {
       name: "Kevin Setiawan",
       role: "Marketing Manager, Multilabel ID",
-      content: "Awalnya kualahan handle banyak inquiry customer, apalagi banyak yang ga serius, dengan adanya chatbot dengan lead qualificaiton dan summarization, admin bisa fokus pada calon client yang memiliki potensi tinggi.",
+      content:
+        "Awalnya kualahan handle banyak inquiry customer, apalagi banyak yang ga serius, dengan adanya chatbot dengan lead qualificaiton dan summarization, admin bisa fokus pada calon client yang memiliki potensi tinggi.",
       rating: 5,
     },
   ];
@@ -60,7 +132,8 @@ export const Testimonials = () => {
             Apa Kata <span className="text-primary">Mereka</span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            Kepercayaan dari berbagai bisnis yang telah bertransformasi dengan Vlowzy
+            Kepercayaan dari berbagai bisnis yang telah bertransformasi dengan
+            Vlowzy
           </p>
         </div>
 
@@ -74,17 +147,24 @@ export const Testimonials = () => {
               <div className="space-y-6">
                 <div className="flex gap-1">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                    <Star
+                      key={i}
+                      className="w-5 h-5 fill-primary text-primary"
+                    />
                   ))}
                 </div>
-                
+
                 <p className="text-foreground leading-relaxed italic">
                   "{testimonial.content}"
                 </p>
-                
+
                 <div className="pt-6 border-t border-border/50">
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  <div className="font-semibold text-foreground">
+                    {testimonial.name}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {testimonial.role}
+                  </div>
                 </div>
               </div>
             </Card>
@@ -96,7 +176,7 @@ export const Testimonials = () => {
           <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-8">
             Dipercaya oleh
           </p>
-          <LogoCarousel />
+          <LogoGridPager />
         </div>
       </div>
     </section>
