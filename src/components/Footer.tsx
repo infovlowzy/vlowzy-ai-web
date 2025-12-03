@@ -78,7 +78,7 @@ export const Footer = () => {
               <li>
                 <strong className="text-foreground">WhatsApp:</strong>
                 <br />
-                <a href="https://wa.me/628123456789" className="hover:text-primary transition-colors">
+                <a href="https://wa.me/6285102629999" className="hover:text-primary transition-colors">
                   +62 85102629999
                 </a>
               </li>
