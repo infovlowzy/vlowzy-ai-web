@@ -13,9 +13,9 @@ export const Footer = () => {
       { name: "AI Consulting", href: "#solutions" },
     ],
     company: [
-      { name: "Tentang Kami", href: "#about" },
-      { name: "Testimoni", href: "#testimonials" },
-      { name: "Karir", href: "#", badge: "Hiring" },
+      { name: "About Us", href: "#about" },
+      { name: "Testimonials", href: "#testimonials" },
+      { name: "Career", href: "#", badge: "Soon" },
       { name: "Blog", href: "#", badge: "Soon" },
     ],
     legal: [
