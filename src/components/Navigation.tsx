@@ -189,8 +189,8 @@ export const Navigation = () => {
             <a href="#solutions" className="text-foreground hover:text-primary transition-colors">
               Solusi
             </a>
-            <a href="#use-cases" className="text-foreground hover:text-primary transition-colors">
-              Studi Kasus
+            <a href="#features" className="text-foreground hover:text-primary transition-colors">
+              Keunggulan
             </a>
             <a href="#testimonials" className="text-foreground hover:text-primary transition-colors">
               Testimoni
