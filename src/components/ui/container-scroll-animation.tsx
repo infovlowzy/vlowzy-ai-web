@@ -89,13 +89,31 @@ export const Card = ({
         rotateX: rotate,
         scale,
         boxShadow:
-          "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
+          "0 0 0 1px rgba(255,255,255,0.1), 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 100px rgba(59, 130, 246, 0.1)",
       }}
-      className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
+      className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border border-neutral-700/50 p-1.5 md:p-2 bg-gradient-to-b from-neutral-800 to-neutral-900 rounded-[2.5rem] md:rounded-[3rem] relative overflow-hidden"
     >
-      <div className="h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4">
-        {children}
+      {/* Bezel highlight - top reflection */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      
+      {/* Camera notch */}
+      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-neutral-700/80 border border-neutral-600/50 z-10">
+        <div className="absolute inset-1 rounded-full bg-neutral-800" />
       </div>
+      
+      {/* Screen bezel */}
+      <div className="h-full w-full overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-neutral-950 border border-neutral-800/50 relative">
+        {/* Screen content */}
+        <div className="h-full w-full overflow-hidden">
+          {children}
+        </div>
+        
+        {/* Screen reflection overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />
+      </div>
+      
+      {/* Bottom bezel highlight */}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neutral-600/30 to-transparent" />
     </motion.div>
   );
 };
