@@ -2,6 +2,7 @@ import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { TextShimmer } from "@/components/ui/text-shimmer";
 
 export const CTA = () => {
   const whatsappNumber = "6285102629999";
@@ -42,15 +43,21 @@ export const CTA = () => {
             >
               Unleash the Power of
             </motion.h1>
-            <motion.span 
+            <motion.div 
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="text-4xl md:text-[5rem] lg:text-[6rem] font-bold mt-1 leading-none bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent"
             >
-              Artificial Intelligence
-            </motion.span>
+              <TextShimmer
+                as="span"
+                duration={3}
+                spread={3}
+                className="text-4xl md:text-[5rem] lg:text-[6rem] font-bold mt-1 leading-none [--base-color:theme(colors.blue.500)] [--base-gradient-color:theme(colors.cyan.300)]"
+              >
+                Artificial Intelligence
+              </TextShimmer>
+            </motion.div>
           </motion.div>
         }
       >
