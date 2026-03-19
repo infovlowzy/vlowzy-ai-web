@@ -26,9 +26,9 @@ export const Footer = () => {
   };
 
   const trustBadges = [
-    { icon: Shield, text: "Data Terenkripsi" },
+    { icon: Shield, text: "Meta Official Tech Provider" },
     { icon: Clock, text: "24/7 Support" },
-    { icon: Award, text: "ISO Certified" },
+    { icon: Award, text: "50+ Clients" },
   ];
 
   return (
