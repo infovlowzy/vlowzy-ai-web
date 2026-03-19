@@ -90,7 +90,7 @@ export function ImageMarquee({
         {images.map((src, idx) => (
           <div
             key={idx}
-            className="group relative flex items-center justify-center h-12 w-32 md:h-14 md:w-40 overflow-hidden"
+            className="group relative flex items-center justify-center h-14 w-32 md:h-16 md:w-40 overflow-hidden"
           >
             {/* Light backdrop for transparent logos */}
             <div className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
