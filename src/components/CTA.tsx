@@ -62,16 +62,20 @@ export const CTA = () => {
         }
       >
         {/* CTA Content inside the iPad/Card */}
-        <div className="h-full w-full bg-gradient-to-br from-primary/20 via-neutral-900 to-blue-900/20 p-6 md:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden">
-          {/* Background effects */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-[100px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-blue-500/20 rounded-full blur-[80px]" />
+        <div className="h-full w-full bg-gradient-to-br from-blue-950 via-neutral-950 to-primary/30 p-6 md:p-12 flex flex-col items-center justify-center text-center relative overflow-hidden">
+          {/* Background effects - more vibrant */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-primary/25 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-blue-600/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-cyan-500/15 rounded-full blur-[80px]" />
+          
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
           
           {/* Content */}
           <div className="relative z-10 max-w-2xl mx-auto">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/40 mb-8 backdrop-blur-sm">
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">Free Consultation</span>
             </div>
@@ -90,7 +94,7 @@ export const CTA = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25 rounded-full"
+                className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/30 rounded-full"
                 onClick={() =>
                   handleWhatsApp(
                     "Halo, saya ingin menjadwalkan free consultation bagaimana AI bisa diterapkan di bisnis saya."
@@ -104,7 +108,7 @@ export const CTA = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-base px-8 py-6 border-white/20 hover:bg-white/10 rounded-full text-white"
+                className="text-base px-8 py-6 border-white/30 hover:bg-white/10 rounded-full text-white backdrop-blur-sm"
                 onClick={() =>
                   handleWhatsApp(
                     "Halo, saya ingin bertanya lebih lanjut tentang AI solution yang ditawarkan Vlowzy."
