@@ -90,14 +90,14 @@ export function ImageMarquee({
         {images.map((src, idx) => (
           <div
             key={idx}
-            className="group relative flex items-center justify-center h-20 w-44 md:h-28 md:w-56"
+            className="group relative flex items-center justify-center h-12 w-36 md:h-16 md:w-48 px-2"
           >
             {/* Light backdrop for transparent logos */}
             <div className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <img
               src={src}
               alt=""
-              className="relative z-10 max-h-16 md:max-h-24 max-w-full w-auto object-contain brightness-0 invert opacity-50 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500"
+              className="relative z-10 h-full w-full object-contain brightness-0 invert opacity-50 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500"
             />
           </div>
         ))}
