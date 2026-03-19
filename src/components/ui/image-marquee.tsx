@@ -92,10 +92,12 @@ export function ImageMarquee({
             key={idx}
             className="group relative flex items-center justify-center h-16 w-32 md:h-20 md:w-40"
           >
+            {/* Light backdrop for transparent logos */}
+            <div className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <img
               src={src}
               alt=""
-              className="max-h-12 md:max-h-16 max-w-full w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              className="relative z-10 max-h-12 md:max-h-16 max-w-full w-auto object-contain brightness-0 invert opacity-50 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500"
             />
           </div>
         ))}
