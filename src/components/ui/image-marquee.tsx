@@ -97,7 +97,7 @@ export function ImageMarquee({
             <img
               src={src}
               alt=""
-              className="relative z-10 w-full scale-125 object-contain opacity-70 hover:opacity-100 transition-all duration-500"
+              className="relative z-10 w-full scale-125 object-contain brightness-0 invert opacity-60 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-500"
             />
           </div>
         ))}
