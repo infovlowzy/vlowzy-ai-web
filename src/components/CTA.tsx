@@ -53,7 +53,7 @@ export const CTA = () => {
                 as="span"
                 duration={1.5}
                 spread={2}
-                className="text-4xl md:text-[5rem] lg:text-[6rem] font-bold mt-1 leading-none [--base-color:#2563eb] [--base-gradient-color:#93c5fd] dark:[--base-color:#1d4ed8] dark:[--base-gradient-color:#60a5fa]"
+                className="text-4xl md:text-[5rem] lg:text-[6rem] font-bold mt-1 leading-none [--base-color:#3b82f6] [--base-gradient-color:#bfdbfe] dark:[--base-color:#60a5fa] dark:[--base-gradient-color:#93c5fd]"
               >
                 Artificial Intelligence
               </TextShimmer>
