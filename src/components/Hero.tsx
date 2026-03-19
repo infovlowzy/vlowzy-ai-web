@@ -1,8 +1,28 @@
+import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import ShaderBackground from "@/components/ui/shader-background";
 
 export const Hero = () => {
+  const [titleNumber, setTitleNumber] = useState(0);
   const whatsappNumber = "6285102629999";
+
+  const titles = useMemo(
+    () => ["AI Agents", "AI Automation", "AI Smart Systems", "AI Assistant"],
+    []
+  );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (titleNumber === titles.length - 1) {
+        setTitleNumber(0);
+      } else {
+        setTitleNumber(titleNumber + 1);
+      }
+    }, 2500);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, titles]);
 
   const handleClick = (message: string) => {
     const encodedMessage = encodeURIComponent(message);
@@ -11,82 +31,127 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-muted to-background" />
+      {/* Dark base background */}
+      <div className="absolute inset-0 bg-[#030712] z-0" />
+      
+      {/* Shader Background - positioned lower */}
+      <div className="absolute inset-0 z-[1]" style={{ top: '35%' }}>
+        <ShaderBackground />
+      </div>
 
-      {/* Animated Glow Effect */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float"
-        style={{ animationDelay: "1.5s" }}
-      />
+      {/* Top gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#030712] via-[#030712]/70 to-transparent z-[2]" />
+      
+      {/* Bottom gradient for smooth transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent z-[3]" />
 
-      <div className="container relative z-10 mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
+      <div className="container relative z-[5] mx-auto px-4 pt-24 pb-20">
+        <div className="flex gap-6 items-center justify-center flex-col max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">AI Agents for Modern Business</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+              <Sparkles className="w-3.5 h-3.5 text-primary" />
+              <span className="text-xs font-medium text-primary tracking-wide uppercase">
+                AI-Powered Business Automation
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Main Headline with Animated Words */}
+          <div className="flex gap-4 flex-col">
+            <motion.h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-3xl tracking-tight text-center font-semibold"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <span className="text-white">Transformasi Bisnis Anda dengan</span>
+              <span className="relative flex w-full justify-center text-center h-[1.3em]">
+                &nbsp;
+                {titles.map((title, index) => (
+                  <motion.span
+                    key={index}
+                    className="absolute font-bold bg-gradient-to-r from-blue-400 via-primary to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
+                    initial={{ opacity: 0, y: "-100" }}
+                    transition={{ type: "spring", stiffness: 50 }}
+                    animate={
+                      titleNumber === index
+                        ? { y: 0, opacity: 1, scale: 1 }
+                        : { y: titleNumber > index ? -150 : 150, opacity: 0, scale: 0.9 }
+                    }
+                  >
+                    {title}
+                  </motion.span>
+                ))}
+              </span>
+            </motion.h1>
+
+            {/* Subtext */}
+            <motion.p 
+              className="text-base sm:text-lg text-white/60 max-w-xl mx-auto leading-relaxed text-center mt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Otomasi cerdas yang bekerja 24/7 untuk meningkatkan efisiensi dan produktivitas bisnis Anda.
+            </motion.p>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            <span className="text-foreground">Transformasikan Cara Kerja</span>
-            <br />
-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-glow">
-              Bisnis Kamu dengan AI
-            </span>
-          </h1>
-
-          {/* Subtext */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Vlowzy membantu bisnis menjadi lebih efisien, cepat, dan produktif dengan solusi AI yang dirancang khusus untuk kebutuhan Anda.
-          </p>
-
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <Button
               size="lg"
-              className="group text-lg px-8 py-6 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
+              className="group text-sm sm:text-base px-6 py-5 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full"
               onClick={() =>
                 handleClick("Halo, saya ingin menjadwalkan free consultation bagaimana AI bisa diterapkan di bisnis saya.")
               }
             >
               Jadwalkan Demo Gratis
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="text-lg px-8 py-6 border-primary/30 hover:bg-primary/10"
+              variant="ghost"
+              className="text-sm sm:text-base px-6 py-5 text-white/70 hover:text-white hover:bg-white/5 rounded-full"
               onClick={() =>
                 handleClick("Halo, saya ingin bertanya lebih lanjut tentang AI solution yang ditawarkan Vlowzy.")
               }
             >
-              Hubungi Kami
+              Pelajari Lebih Lanjut
             </Button>
-          </div>
+          </motion.div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto">
-            <div className="space-y-2 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <div className="text-3xl md:text-4xl font-bold text-primary">24/7</div>
-              <div className="text-sm text-muted-foreground">Smart Agents</div>
+          {/* Stats - Compact */}
+          <motion.div 
+            className="flex flex-wrap justify-center gap-8 sm:gap-12 pt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <div className="text-center">
+              <div className="text-2xl sm:text-3xl font-semibold text-white">50+</div>
+              <div className="text-xs text-white/40 mt-0.5 uppercase tracking-wider">Klien Aktif</div>
             </div>
-            <div className="space-y-2 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <div className="text-3xl md:text-4xl font-bold text-primary">100%</div>
-              <div className="text-sm text-muted-foreground">Automation</div>
+            <div className="text-center">
+              <div className="text-2xl sm:text-3xl font-semibold text-white">80%</div>
+              <div className="text-xs text-white/40 mt-0.5 uppercase tracking-wider">Waktu Terhemat</div>
             </div>
-            <div className="space-y-2 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-              <div className="text-3xl md:text-4xl font-bold text-primary">∞</div>
-              <div className="text-sm text-muted-foreground">Possibilities</div>
+            <div className="text-center">
+              <div className="text-2xl sm:text-3xl font-semibold text-white">24/7</div>
+              <div className="text-xs text-white/40 mt-0.5 uppercase tracking-wider">AI Support</div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };

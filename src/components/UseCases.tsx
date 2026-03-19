@@ -33,8 +33,11 @@ export const UseCases = () => {
     <section className="py-24 bg-muted/30 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in-up">
+          <p className="text-sm uppercase tracking-widest text-primary mb-4 font-medium">
+            Studi Kasus
+          </p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Bagaimana AI <span className="text-primary">Membantu Bisnis</span>
+            Kisah Sukses <span className="text-primary">Klien Kami</span>
           </h2>
           <p className="text-xl text-muted-foreground">
             Studi kasus nyata dari berbagai industri yang telah menggunakan Vlowzy

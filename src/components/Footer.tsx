@@ -7,7 +7,14 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-primary">Vlowzy</h3>
+            <a href="/" className="inline-block">
+              <img
+                src="/logo.png"
+                alt="Vlowzy"
+                className="h-8 w-auto"
+                loading="lazy"
+              />
+            </a>
             <p className="text-muted-foreground leading-relaxed">
               AI Software House company, bagian dari <strong className="text-foreground">PT Tritech Dynamic Indonesia</strong>.
             </p>
