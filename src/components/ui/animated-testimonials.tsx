@@ -129,7 +129,7 @@ export function AnimatedTestimonials({
           </motion.div>
 
           {/* Right side: Testimonial cards */}
-          <motion.div variants={itemVariants} className="relative h-full min-h-[350px] md:min-h-[400px]">
+          <motion.div variants={itemVariants} className="relative h-full min-h-[420px] md:min-h-[480px]">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
@@ -151,9 +151,9 @@ export function AnimatedTestimonials({
                         <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500" />
                       ))}
                   </div>
-                  <div className="relative mb-6 flex-1">
+                  <div className="relative mb-6 flex-1 overflow-y-auto">
                     <Quote className="absolute -top-2 -left-2 h-8 w-8 text-primary/20 rotate-180" />
-                    <p className="relative z-10 text-base md:text-lg font-medium leading-relaxed text-neutral-200">
+                    <p className="relative z-10 text-sm md:text-base font-medium leading-relaxed text-neutral-200">
                       "{testimonial.content}"
                     </p>
                   </div>
