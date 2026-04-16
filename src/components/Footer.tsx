@@ -19,9 +19,8 @@ export const Footer = () => {
       { name: "Blog", href: "#", badge: "Soon" },
     ],
     legal: [
-      { name: "Privacy Policy", href: "#" },
-      { name: "Terms of Service", href: "#" },
-      { name: "Cookie Policy", href: "#" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Terms of Service", href: "/terms-and-conditions" },
     ],
   };
 
